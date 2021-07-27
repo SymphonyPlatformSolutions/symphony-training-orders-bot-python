@@ -1,0 +1,20 @@
+# coding: utf-8
+import asyncio
+import logging.config
+from pathlib import Path
+
+from symphony.bdk.core.activity.command import CommandContext
+from symphony.bdk.core.config.loader import BdkConfigLoader
+from symphony.bdk.core.service.datafeed.real_time_event_listener import RealTimeEventListener
+from symphony.bdk.core.symphony_bdk import SymphonyBdk
+config = BdkConfigLoader.load_from_symphony_dir('config.yaml')
+bdk = SymphonyBdk(config)
+await bdk.users().list_users_by_usernames(["km"])
+user_response = await bdk.users().list_users_by_usernames(["km"])
+user = user_response['users'][0]
+user_id = user.id
+user_id
+stream = await bdk.streams().create_im_or_mim([user_id])
+stream
+await bdk.messages().send_message(stream.id, "hi")
+%save -r rest_api_example 1-99999

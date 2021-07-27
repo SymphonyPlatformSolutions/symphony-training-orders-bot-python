@@ -1,0 +1,10 @@
+host: develop2.symphony.com
+
+ssl:
+  trustStore:
+    path: resources/all_symphony_certs.pem
+
+bot:
+  username: mybotusername
+  privateKey:
+    path: rsa/privatekey.pem
