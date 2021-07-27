@@ -1,0 +1,2 @@
+sym-api-client-python>=2.0b4
+Jinja2~=3.0
