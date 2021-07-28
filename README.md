@@ -8,7 +8,7 @@ This repository is divided into branches, each representing the end state of eac
 * [Chapter 3: Generating a BDK 2.0 Project](https://github.com/SymphonyPlatformSolutions/symphony-training-orders-bot/tree/chapter-3)
 
 
-# Sample BDK 2.0 for Python project
+## Sample BDK 2.0 for Python project
 To get started, follow these commands below:
 
 ## First run only:
