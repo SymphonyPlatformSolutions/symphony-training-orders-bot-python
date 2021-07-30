@@ -26,20 +26,16 @@ async def run():
         datafeed_loop = bdk.datafeed()
         datafeed_loop.subscribe(MessageListener())
 
-        activities = bdk.activities()
-        activities.register(EchoCommandActivity(bdk.messages()))
-        activities.register(GreetUserJoinedActivity(bdk.messages(), bdk.users()))
-        activities.register(GifSlashCommand(bdk.messages()))
-        activities.register(GifFormReplyActivity(bdk.messages()))
+        # Example 1: Obtain User Information and send 1-1 IM
+        user_response = await bdk.users().list_users_by_usernames(["vinay@symphony.com"])
+        logging.info(user_response)
+        user = user_response['users'][0]
+        logging.info("********* UserId: %s", user.id)
 
-        @activities.slash("/hello")
-        async def hello(context: CommandContext):
-            name = context.initiator.user.display_name
-            response = f"<messageML>Hello {name}, hope you are doing well!</messageML>"
-            await bdk.messages().send_message(context.stream_id, response)
+        stream = await bdk.streams().create_im_or_mim([user.id])
+        await bdk.messages().send_message(stream.id, "Hello IM")
 
-        # Start the datafeed read loop
-        await datafeed_loop.start()
+        # Example 2: Obtain User Information
 
 
 class MessageListener(RealTimeEventListener):
