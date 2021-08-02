@@ -44,6 +44,11 @@ async def run():
         await bdk.streams().add_member_to_room(349026222342678, roomId)
         await bdk.messages().send_message(roomId, "Hello Room")
 
+        # Example 3: OBO Example
+        obo_auth_session = bdk.obo(username="vinay@symphony.com")
+        async with bdk.obo_services(obo_auth_session) as obo_services:
+            await obo_services.messages().send_message(roomId, "Hello from OBO!")
+
 class MessageListener(RealTimeEventListener):
     async def on_message_sent(self, initiator: V4Initiator, event: V4MessageSent):
         logging.debug("Message received from %s: %s",
