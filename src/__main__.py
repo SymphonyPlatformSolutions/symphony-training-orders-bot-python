@@ -22,7 +22,8 @@ logging.config.fileConfig(logging_conf, disable_existing_loggers=False)
 
 
 async def run():
-    config = BdkConfigLoader.load_from_symphony_dir('config.yaml')
+    config = BdkConfigLoader.load_from_file(Path.joinpath(current_dir, 'resources', 'config.yaml'))
+    # config = BdkConfigLoader.load_from_symphony_dir('config.yaml')
 
     async with SymphonyBdk(config) as bdk:
         datafeed_loop = bdk.datafeed()
