@@ -28,8 +28,8 @@ async def run():
 
     async with SymphonyBdk(config) as bdk:
         datafeed_loop = bdk.datafeed()
-        # datafeed_loop.subscribe(MessageListener())
         datafeed_loop.subscribe(MessageListener(bdk.messages()))
+        datafeed_loop.subscribe(FormListener(bdk.messages()))
 
         # Start the datafeed read loop
         await datafeed_loop.start()
@@ -51,6 +51,16 @@ class MessageListener(RealTimeEventListener):
             form += "</form>"
         await self._messages.send_message(event.message.stream.stream_id, form)
 
+class FormListener(RealTimeEventListener):
+    def __init__(self, messages: MessageService):
+        self._messages = messages
+        super().__init__()
+    
+    async def on_symphony_elements_action(self, initiator: V4Initiator, event: V4MessageSent):
+        values = event.form_values
+
+        reply_template = "Order placed for {quantity} of <cash tag =\"{ticker}\" /> @ {price}"
+        await self._messages.send_message(event.stream.stream_id, reply_template.format(**values))
 
 # Start the main asyncio run
 try:
