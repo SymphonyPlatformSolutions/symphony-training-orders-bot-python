@@ -34,6 +34,8 @@ async def run():
         # Start the datafeed read loop
         await datafeed_loop.start()
 
+
+# Example 1: Create RealTime Message Listener & Form Reply Listener
 class MessageListener(RealTimeEventListener):
     def __init__(self, messages: MessageService):
         self._messages = messages
@@ -55,7 +57,7 @@ class FormListener(RealTimeEventListener):
     def __init__(self, messages: MessageService):
         self._messages = messages
         super().__init__()
-    
+
     async def on_symphony_elements_action(self, initiator: V4Initiator, event: V4MessageSent):
         values = event.form_values
 
