@@ -35,7 +35,8 @@ class FormListener(RealTimeEventListener):
         super().__init__()
 
     async def on_symphony_elements_action(self, initiator: V4Initiator, event: V4MessageSent):
-        values = event.form_values
+        if event.form_id == 'order':
+            values = event.form_values
+            reply_template = "Order placed for {quantity} of <cash tag =\"{ticker}\" /> @ {price}"
 
-        reply_template = "Order placed for {quantity} of <cash tag =\"{ticker}\" /> @ {price}"
         await self._messages.send_message(event.stream.stream_id, reply_template.format(**values))
