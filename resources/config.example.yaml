@@ -8,3 +8,8 @@ bot:
   username: mybotusername
   privateKey:
     path: rsa/privatekey.pem
+
+app:
+  appId: python-bdk-demo-obo
+  privateKey:
+    path: rsa/app-privatekey.pem
