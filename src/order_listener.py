@@ -26,7 +26,7 @@ class MessageListener(RealTimeEventListener):
             form += "<text-field name=\"price\" placeholder=\"Price\" /><br />"
             form += "<button type=\"action\" name=\"order\"> Place Order</button>"
             form += "</form>"
-        await self._messages.send_message(event.message.stream.stream_id, form)
+            await self._messages.send_message(event.message.stream.stream_id, form)
 
 
 class FormListener(RealTimeEventListener):
