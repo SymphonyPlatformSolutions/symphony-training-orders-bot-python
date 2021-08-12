@@ -39,4 +39,4 @@ class FormListener(RealTimeEventListener):
             values = event.form_values
             reply_template = "Order placed for {quantity} of <cash tag =\"{ticker}\" /> @ {price}"
 
-        await self._messages.send_message(event.stream.stream_id, reply_template.format(**values))
+            await self._messages.send_message(event.stream.stream_id, reply_template.format(**values))
