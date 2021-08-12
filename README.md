@@ -8,6 +8,7 @@ This repository is divided into branches, each representing the end state of eac
 * [Chapter 5: Using REST API Clients](https://github.com/SymphonyPlatformSolutions/symphony-training-orders-bot-python/tree/chapter-5)
 * [Chapter 6: Handling Real Time Events](https://github.com/SymphonyPlatformSolutions/symphony-training-orders-bot-python/tree/chapter-6)
 * [Chapter 7: Implementing Activities](https://github.com/SymphonyPlatformSolutions/symphony-training-orders-bot-python/tree/chapter-7)
+* [Chapter 8: Message Templating](https://github.com/SymphonyPlatformSolutions/symphony-training-orders-bot-python/tree/chapter-8)
 
 ## Sample BDK 2.0 for Python project
 To get started, follow these commands below:
