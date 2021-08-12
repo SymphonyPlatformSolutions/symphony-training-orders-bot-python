@@ -40,4 +40,4 @@ class FormListener(RealTimeEventListener):
             values = event.form_values
             reply_template = self._template.render(values)
 
-        await self._messages.send_message(event.stream.stream_id, reply_template)
+            await self._messages.send_message(event.stream.stream_id, reply_template)
