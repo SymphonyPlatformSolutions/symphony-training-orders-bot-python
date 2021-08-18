@@ -1,5 +1,3 @@
-import os
-
 from jinja2 import Template
 
 from symphony.bdk.core.activity.command import SlashCommandActivity, CommandContext
