@@ -16,7 +16,6 @@ from symphony.bdk.core.service.message.message_service import MessageService
 
 # Configure logging
 from .order_listener import MessageListener, FormListener
-from .price_activity import PriceFormReply
 
 current_dir = Path(__file__).parent.parent
 logging_conf = Path.joinpath(current_dir, 'resources', 'logging.conf')
@@ -33,7 +32,6 @@ async def run():
         datafeed_loop.subscribe(FormListener(bdk.messages()))
 
         activities = bdk.activities()
-        activities.register(PriceFormReply(bdk.messages()))
 
         @activities.slash("/price")
         async def price(context: CommandContext):
