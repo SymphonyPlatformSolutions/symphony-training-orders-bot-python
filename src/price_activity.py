@@ -1,8 +1,9 @@
 import random
-from jinja2 import Template
 
-from symphony.bdk.core.service.message.message_service import MessageService
+from jinja2 import Template
 from symphony.bdk.core.activity.form import FormReplyActivity, FormReplyContext
+from symphony.bdk.core.service.message.message_service import MessageService
+
 
 class PriceFormReply(FormReplyActivity):
     def __init__(self, messages: MessageService):

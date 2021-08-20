@@ -1,14 +1,10 @@
 import re
 
-from symphony.bdk.core.activity.command import CommandContext
+from jinja2 import Template
 from symphony.bdk.core.service.datafeed.real_time_event_listener import RealTimeEventListener
+from symphony.bdk.core.service.message.message_service import MessageService
 from symphony.bdk.gen.agent_model.v4_initiator import V4Initiator
 from symphony.bdk.gen.agent_model.v4_message_sent import V4MessageSent
-from symphony.bdk.gen.pod_model.v3_room_attributes import V3RoomAttributes
-from symphony.bdk.core.service.message.message_service import MessageService
-from jinja2 import Template
-from .activities import EchoCommandActivity, GreetUserJoinedActivity
-from .gif_activities import GifSlashCommand, GifFormReplyActivity
 
 
 class MessageListener(RealTimeEventListener):
